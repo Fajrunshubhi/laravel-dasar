@@ -38,4 +38,13 @@ class RoutingTest extends TestCase
         $this->view('hello', ['name' => 'Fajrun'])
             ->assertSeeText('Heloooo Fajrun');
     }
+
+    public function testRouteParameterOpsional()
+    {
+        $this->get('/users/fajrun')
+            ->assertSeeText('User fajrun');
+
+        $this->get('/users/')
+            ->assertSeeText('User 404');
+    }
 }

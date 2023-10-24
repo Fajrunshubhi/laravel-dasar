@@ -34,3 +34,20 @@ Route::get('/hello', function () {
 Route::get('/hello-world', function () {
     return view('hello.world', ['name' => 'Fajrun Shubhi']);
 });
+
+Route::get('/products/{id}', function ($productId) {
+    return "Product $productId";
+})->name('product.detail');
+
+Route::get('/products/{id}/item/{item}', function ($productId, $item) {
+    return "Product $productId dengan item $item";
+})->name('product.item.detail');
+
+Route::get('/categories/{id}', function ($categoryId) {
+    return "Category $categoryId";
+})->where('id', '[0-9]+')->name('category.detail');
+
+
+Route::get('/users/{id?}', function ($userId = '404') {
+    return "User $userId";
+})->name('user.detail');
