@@ -9,7 +9,8 @@ class HelloController extends Controller
 
     public function hello(Request $request): string
     {
-        $url = $request->header('Accept');
+        $url = $request->url();
+
         return 'Hello World! ' . $url;
     }
 }
