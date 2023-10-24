@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HelloController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,3 +52,5 @@ Route::get('/categories/{id}', function ($categoryId) {
 Route::get('/users/{id?}', function ($userId = '404') {
     return "User $userId";
 })->name('user.detail');
+
+Route::get('/controller/hello', [HelloController::class, 'hello']);
