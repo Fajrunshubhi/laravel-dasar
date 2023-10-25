@@ -23,4 +23,24 @@ class InputControllerTest extends TestCase
             ['first' => 'shubhi', 'last' => "fajrun"]
         ])->assertSeeText('name')->assertSeeText('first')->assertSeeText('last')->assertSeeText('shubhi')->assertSeeText('fajrun');
     }
+
+    public function testInputType()
+    {
+        $this->post('/input/type', [
+            'name' => 'Joko',
+            'married' => 'true',
+            'birth_date' => '1990-10-10'
+        ])->assertSeeText('Joko')->assertSeeText('true')->assertSeeText('1990-10-10');
+    }
+
+    public function testInputFilterOnly()
+    {
+        $this->post('/input/filter/only', [
+            "name" => [
+                "first" => "fajrun",
+                "mid" => "budi",
+                "last" => "shubhi"
+            ]
+        ])->assertSeeText('fajrun')->assertSeeText('budi')->assertSeeText('shubhi');
+    }
 }
