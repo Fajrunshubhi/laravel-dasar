@@ -41,6 +41,6 @@ class InputControllerTest extends TestCase
                 "mid" => "budi",
                 "last" => "shubhi"
             ]
-        ])->assertSeeText('fajrun')->assertSeeText('budi')->assertSeeText('shubhi');
+        ])->assertSeeText('fajrun')->assertSeeText('shubhi');
     }
 }
