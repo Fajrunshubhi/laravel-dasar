@@ -10,6 +10,7 @@ use App\Http\Controllers\ResponseController;
 use App\Http\Middleware\ContohMiddleware;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\URL;
 
 /*
 |--------------------------------------------------------------------------
@@ -105,7 +106,9 @@ Route::get('/redirect/to', [RedirectController::class, 'redirectTo']);
 Route::get('/redirect/name', [RedirectController::class, 'redirectName']);
 Route::get('/redirect/name/{name}', [RedirectController::class, 'redirectHello'])
     ->name('redirect-hello');
-
+Route::get('/redirect/named', function () {
+    return route('redirect-hello', ['name' => "fajrunsssssss"]);
+});
 Route::get('/redirect/action', [RedirectController::class, 'redirectAction']);
 
 Route::get('/redirect/away', [RedirectController::class, 'redirectAway']);
@@ -123,3 +126,11 @@ Route::middleware(['contoh:JRUN,401'])->prefix('/middleware')->group(function ()
 
 Route::get('/form', [FormController::class, 'form']);
 Route::post('/form', [FormController::class, 'submitForm']);
+
+// Route::get('/url/current', function () {
+//     // return url()->current();
+//     // full = query params dapat
+//     // return URL::full();
+//     // current = hanya url
+//     return URL::current();
+// });
