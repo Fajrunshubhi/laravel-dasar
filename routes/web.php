@@ -138,3 +138,20 @@ Route::get('/url/current', function () {
 Route::get('/session/create', [SessionController::class, 'createSession']);
 
 Route::get('/session/get', [SessionController::class, 'getSession']);
+
+Route::get('/error/sample', function () {
+    throw new Exception("Sample Errorrrr");
+});
+
+Route::get('/abort/400', function () {
+    abort(400, "Eroor 400 brooo");
+});
+Route::get('/abort/300', function () {
+    abort(300);
+});
+Route::get('/abort/500', function () {
+    abort(500);
+});
+Route::get('/abort/200', function () {
+    abort(200);
+});
